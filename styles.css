@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+}
+
+.game {
+    height: 100%;
+}
+
+.title {
+    position: fixed;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f57786;
+    font-size: 5em;
+    font-family: 'DungGeunMo';
+}
+
+.hide {
+    display: none;
+}
+
+.gameArea {
+    width: 100%;
+    height: 100%;
+    background-color: #efefef;
+}
+
+.startBtn {
+    position: absolute;
+    background: #2a5c87;
+    width: 50%;
+    left: 25%;
+    top: 400px;
+    color: #eaa4ac;
+    font-size: 2em;
+    font-family: 'DungGeunMo';
+    border: 3px solid #2a5c87;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.bird {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    background-image: url("./bird.png");
+    width: 58px;
+    height: 40px;
+    background-size: cover;
+}
+
+.wing {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background-image: url("./wing.png");
+    width: 25px;
+    height: 14px;
+    background-size: cover;
+}
+
+.score {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #52b0a5;
+    font-size: 1.5em;
+    font-family: 'DungGeunMo';
+    text-align: center;
+    height: 50px;
+}
+
+.gameMessage {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: #efefef;
+    font-size: 1.5em;
+    font-family: 'DungGeunMo';
+    text-align: center;
+    background: #503d53;
+}
+
+.pipe {
+    position: absolute;
+    width: 100px;
+}
+
+@media screen and (max-width: 767px) {
+    .title {
+        font-size: 80px;
+    }
+    .startBtn {
+        width: 40%;
+        transform: translateX(15%);
+    }
+};
