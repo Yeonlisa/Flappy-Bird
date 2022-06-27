@@ -28,7 +28,6 @@ let pipe = {
 
 // 브라우저에서 애니메이션을 부드럽게 움직이게 한다
 function start() {
-    console.log("game start");
     // 게임진행중여부는 true, score는 0으로 초기화해놓는다
     player.inplay = true;
     player.score = 0;
@@ -43,7 +42,7 @@ function start() {
     bird.setAttribute("class", "bird");
     wing.setAttribute("class", "wing");
     wing.pos = 15;
-    wing.style.top = wing.pos + "px";
+    wing.style.top = `${wing.pos}px`;
     // bird안에 wing, gameArea 안에 bird가 나타나게 한다
     bird.appendChild(wing);
     gameArea.appendChild(bird);
@@ -70,8 +69,8 @@ function makePipe(pipePos) {
     let pipeUp = document.createElement("div");
     pipeUp.classList.add("pipe");
     pipeUp.height = Math.floor(Math.random() * 350);
-    pipeUp.style.height = pipeUp.height + "px";
-    pipeUp.style.left = totalWidth + pipePos + "px";
+    pipeUp.style.height = `${pipeUp.height}px`;
+    pipeUp.style.left = `${totalWidth + pipePos}px`;
     pipeUp.x = totalWidth + pipePos;
     pipeUp.style.top = "0px";
     pipeUp.style.backgroundColor = "#ffeb26";
@@ -82,8 +81,8 @@ function makePipe(pipePos) {
     // 아래쪽 파이프
     let pipeDown = document.createElement("div");
     pipeDown.classList.add("pipe");
-    pipeDown.style.height = totalHeight - pipeUp.height - pipe.spaceBetweenCol + "px";
-    pipeDown.style.left = totalWidth + pipePos + "px";
+    pipeDown.style.height = `${totalHeight - pipeUp.height - pipe.spaceBetweenCol}px`;
+    pipeDown.style.left = `${totalWidth + pipePos}px`;
     pipeDown.x = totalWidth + pipePos;
     pipeDown.style.bottom = "0px";
     pipeDown.style.backgroundColor = "#5447a3";
@@ -97,7 +96,7 @@ function movePipes(bird) {
     let counter = 0;
     pipes.forEach((item) => {
         item.x -= player.speed;
-        item.style.left = item.x + "px";
+        item.style.left = `${item.x}px`;
         if(item.x < 0) {
             item.parentElement.removeChild(item);
             counter++;
@@ -155,18 +154,17 @@ function playGame() {
         // bird의 날개짓을 구현했다
         if(move) {
             wing.pos = wing.pos === 15 ? 25 : 15;
-            wing.style.top = wing.pos + "px";
+            wing.style.top = `${wing.pos}px`;
         }
 
         // 중력구현
         player.y += player.speed * 2;
         // 아래로 떨어져서 화면에 안보이면 게임종료나면서 점수책정중단
         if(player.y > gameArea.offsetHeight) {
-            console.log("game over");
             playGameOver(bird);
         }
-        bird.style.left = player.x + "px";
-        bird.style.top = player.y + "px";
+        bird.style.left = `${player.x}px`;
+        bird.style.top = `${player.y}px`;
         window.requestAnimationFrame(playGame);
         player.score++;
         score.innerText = `SCORE : ${player.score}`;   
@@ -175,12 +173,10 @@ function playGame() {
 
 // 키보드 인식함수
 function pressOn(e) {
-    console.log(e.code, keys);
     keys[e.code] = true;
 }
 
 function pressOff(e) {
-    console.log(e.code, keys);
     keys[e.code] = false;
 }
 
